@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.template.loader import  render_to_string
 
 montly_challenges = {
     "january": "Don't eat sugar!",
@@ -11,7 +12,8 @@ montly_challenges = {
 }
 
 def index(request):
-    return HttpResponse("Choose your month challenge!")
+    challenge_text = render_to_string("challenges/challenge.html")
+    return render(request, "challenges/challenge.html")
 
 
 def test(request, var):
@@ -28,5 +30,5 @@ def montly_challenge_by_number(request, month):
 
 
 def montly_challenge(request, month):
-    challenge_text = montly_challenges.get(month, HttpResponseNotFound("This month is not supported"))
-    return HttpResponse(challenge_text)
+    # challenge_text = montly_challenges.get(month, HttpResponseNotFound("This month is not supported"))
+    return render(request, "challenges/challenge.html")
