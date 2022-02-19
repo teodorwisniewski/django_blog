@@ -13,7 +13,11 @@
   <body>
     <h1>The month's challenge!</h1>
     <h2>Here is the month that you have chosen: "{{ month|title }}"</h2>
-    <h2>{{ text }}</h2>
+    {% if text%}
+      <h2>{{ text }}</h2>
+    {% else %}
+      <h2>"There is no challenge defined for this month."</h2>
+    {% endif %}
     <h2><a href="/">Back to challenges</a> </h2>
 
 

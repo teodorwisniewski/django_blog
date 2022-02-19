@@ -14,6 +14,7 @@
     <h1>The month's challenge!</h1>
     <ul>
         {% for month in months %}
+
         <li><a href="{% url 'month-challenge' month=month  %}">{{month|title}}</a></li>
         {% endfor %}
     </ul>

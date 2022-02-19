@@ -9,6 +9,12 @@ montly_challenges = {
     "april": "Read about flexible keto",
     "may": "increase carbs",
     "june": "leave keto",
+    "july": None,
+    "August": None,
+    "September": None,
+    "October": None,
+    "November": None,
+    "December": None
 }
 
 def index(request):
