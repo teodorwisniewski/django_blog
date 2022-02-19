@@ -12,8 +12,10 @@ montly_challenges = {
 }
 
 def index(request):
-    challenge_text = render_to_string("challenges/challenge.html")
-    return render(request, "challenges/challenge.html")
+    months = list(montly_challenges.keys())
+    return render(request, "challenges/index.html", {
+        "months": months
+    })
 
 
 def test(request, var):
@@ -30,5 +32,8 @@ def montly_challenge_by_number(request, month):
 
 
 def montly_challenge(request, month):
-    # challenge_text = montly_challenges.get(month, HttpResponseNotFound("This month is not supported"))
-    return render(request, "challenges/challenge.html")
+    challenge_text = montly_challenges.get(month, "undefined")
+    return render(request, "challenges/challenge.html", {
+        "month": month,
+        "text": challenge_text
+    })
