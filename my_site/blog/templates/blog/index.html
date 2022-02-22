@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block css_files %}
+    <link href="{% static "blog/index.css" %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block title %}
+    Teodor's notes on Python, SQL, data engineering, programming and all that jazz...
+{% endblock %}
+
+{% block content %}
+    <h1>Welcome to my blog!</h1>
+    <section id="welcome">
+      <header>
+        <img src="{% static "images/zdjecieCV.jpg" %}" alt="Teo - The Author Of This Blog" />
+        <h2>TEODOR'S BLOG</h2>
+      </header>
+      <p>I am currently working at Altman Solon as a Data Analyst/Data
+Engineer. I have a highly technical profile with the focus on communicating sophisticated ideas to a non-technical audience. I received my PhD in
+mathematical predictive modelling in power systems and electrical machines from the Department of Power Systems, University of CentraleSupélec, Paris, France.
+ </section>
+
+
+<section id="latest-posts">
+  <h2>My Latest Thoughts</h2>
+
+  <ul>
+    {% for post in posts %}
+      {% include "blog/includes/post.html" %}
+    {% endfor %}
+  </ul>
+</section>
+
+
+<section id="about">
+  <h2>What I Do</h2>
+  <p>
+    I love programming, I love to help others and I enjoy exploring new
+    technologies in general!
+  </p>
+  <p>
+    My goal is to keep on growing as a developer - and if I could help you do
+    the same, I'd be very happy!
+  </p>
+</section>
+{% endblock %}

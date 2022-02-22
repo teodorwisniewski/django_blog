@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect, Http404
 from django.template.loader import  render_to_string
 
 montly_challenges = {
@@ -38,8 +38,11 @@ def montly_challenge_by_number(request, month):
 
 
 def montly_challenge(request, month):
-    challenge_text = montly_challenges.get(month, "undefined")
-    return render(request, "challenges/challenge.html", {
-        "month": month,
-        "text": challenge_text
-    })
+    try:
+        challenge_text = montly_challenges[month]
+        return render(request, "challenges/challenge.html", {
+            "month": month,
+            "text": challenge_text
+        })
+    except:
+        raise Http404()
